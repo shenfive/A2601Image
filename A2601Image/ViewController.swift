@@ -79,5 +79,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.backgroundColor = .yellow
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected\(indexPath)")
+        
+        let alert = UIAlertController(title: "提示", message: "放大嗎？", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
+        alert.addAction(UIAlertAction(title: "確定", style: .default, handler: { _ in
+            print("確定")
+        }))
+        present(alert, animated: true)
+        
+        
+    }
 }
 

@@ -8,19 +8,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var theImagView: UIImageView!
+ 
+    @IBOutlet weak var theCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-//        if let path = Bundle.main.path(forResource: "a001", ofType: "jpg"){
-//            theImagView.image = UIImage.init(contentsOfFile: path)
-//        }
-        theImagView.image = UIImage(named: "a002")
+        theCollectionView.dataSource = self
+        theCollectionView.delegate = self
+
         
     }
 
 
+}
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = UICollectionViewCell()
+        cell.backgroundColor = .green
+        return cell
+    }
 }
 

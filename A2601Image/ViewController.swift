@@ -14,9 +14,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        if let path = Bundle.main.path(forResource: "a001", ofType: "jpg"){
-            theImagView.image = UIImage.init(contentsOfFile: path)
-        }
+//        if let path = Bundle.main.path(forResource: "a001", ofType: "jpg"){
+//            theImagView.image = UIImage.init(contentsOfFile: path)
+//        }
+        theImagView.image = UIImage(named: "a002")
         
     }
 

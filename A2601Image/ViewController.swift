@@ -21,6 +21,24 @@ class ViewController: UIViewController {
                   UIImage(named: "image5")]
         theCollectionView.dataSource = self
         theCollectionView.delegate = self
+        
+        // 取得螢幕的尺寸
+              let fullScreenSize = UIScreen.main.bounds.size
+              
+        // 建立 UICollectionViewFlowLayout
+        let layout = UICollectionViewFlowLayout()
+        
+        // 設置 section 的間距 四個數值分別代表 上、左、下、右 的間距
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        
+        // 設置每一行的間距
+        layout.minimumLineSpacing = 5
+        
+        // 設置每個 cell 的尺寸
+        layout.itemSize = CGSize(width: (fullScreenSize.width / 3 - 10.0),
+                                 height: fullScreenSize.width / 3 - 10.0)
+        theCollectionView.setCollectionViewLayout(layout, animated: true)  
+        
 
         
     }

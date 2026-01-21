@@ -87,6 +87,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         alert.addAction(UIAlertAction(title: "取消", style: .cancel))
         alert.addAction(UIAlertAction(title: "確定", style: .default, handler: { _ in
             print("確定")
+            let nextVc = ImageViewController()
+                
+            nextVc.image = self.images[indexPath.row]
+       
+            self.present(nextVc, animated: true)
+            
         }))
         present(alert, animated: true)
         

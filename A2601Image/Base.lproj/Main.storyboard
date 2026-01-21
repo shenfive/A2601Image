@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,33 +28,47 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reuseID" id="CyZ-lK-XSA" customClass="MyCollectionViewCell" customModule="A2601Image" customModuleProvider="target">
-                                        <rect key="frame" x="79" y="0.0" width="235" height="219"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="235" height="219"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nLZ-gi-Tka">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1DU-h7-cZo">
-                                                    <rect key="frame" x="8" y="8" width="218" height="203"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" id="1DU-h7-cZo">
+                                                    <rect key="frame" x="8" y="8" width="112" height="110"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
-                                        </view>
-                                        <size key="customSize" width="235" height="219"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="150" height="150"/>
                                         <connections>
                                             <outlet property="theCellImageView" destination="1DU-h7-cZo" id="7Ld-KJ-WCc"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qvG-Cz-S95">
+                                <rect key="frame" x="0.0" y="118" width="393" height="32"/>
+                                <segments>
+                                    <segment title="每行三個"/>
+                                    <segment title="每行四個"/>
+                                    <segment title="每行五個"/>
+                                </segments>
+                                <connections>
+                                    <action selector="numberOfItemInLine:" destination="BYZ-38-t0r" eventType="valueChanged" id="EVm-UF-b3q"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="qvG-Cz-S95" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3iM-YG-9BL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qvG-Cz-S95" secondAttribute="trailing" id="4Lh-ur-Zec"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gw1-6m-9vL" secondAttribute="bottom" id="Aaz-dW-CUg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gw1-6m-9vL" secondAttribute="trailing" id="IuM-T2-WK6"/>
                             <constraint firstItem="Gw1-6m-9vL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="s60-Ju-PIT"/>
                             <constraint firstItem="Gw1-6m-9vL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vJ9-Co-x9a"/>
+                            <constraint firstItem="qvG-Cz-S95" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vSB-4f-FeB"/>
                         </constraints>
                     </view>
                     <connections>

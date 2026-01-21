@@ -22,9 +22,35 @@ class ViewController: UIViewController {
         theCollectionView.dataSource = self
         theCollectionView.delegate = self
         
-        // 取得螢幕的尺寸
-              let fullScreenSize = UIScreen.main.bounds.size
+
               
+        setCellLayout()
+        
+
+        
+    }
+    
+    @IBAction func numberOfItemInLine(_ sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            setCellLayout(number: 3)
+        case 1:
+            self.setCellLayout(number: 4)
+        case 2:
+            self.setCellLayout(number: 5)
+        default:
+            break
+        }
+        
+    }
+    
+    
+    
+    func setCellLayout(number:Double = 3) {
+        // 取得螢幕的尺寸
+        let fullScreenSize = UIScreen.main.bounds.size
         // 建立 UICollectionViewFlowLayout
         let layout = UICollectionViewFlowLayout()
         
@@ -35,12 +61,9 @@ class ViewController: UIViewController {
         layout.minimumLineSpacing = 5
         
         // 設置每個 cell 的尺寸
-        layout.itemSize = CGSize(width: (fullScreenSize.width / 3 - 10.0),
-                                 height: fullScreenSize.width / 3 - 10.0)
-        theCollectionView.setCollectionViewLayout(layout, animated: true)  
-        
-
-        
+        layout.itemSize = CGSize(width: (fullScreenSize.width / number - 10.0),
+                                 height: fullScreenSize.width / number - 10.0)
+        theCollectionView.setCollectionViewLayout(layout, animated: true)
     }
 
 
@@ -53,6 +76,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! MyCollectionViewCell
         cell.theCellImageView.image = images[indexPath.row]
+        cell.backgroundColor = .yellow
         return cell
     }
 }

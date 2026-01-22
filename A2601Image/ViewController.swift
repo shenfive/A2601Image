@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
- 
+    
     @IBOutlet weak var theCollectionView: UICollectionView!
     var images = [UIImage?]()
     
@@ -22,11 +22,13 @@ class ViewController: UIViewController {
         theCollectionView.dataSource = self
         theCollectionView.delegate = self
         
-
-              
+        let nib = UINib(nibName: "MyImageCollectionViewCell", bundle: nil)
+        theCollectionView.register(nib, forCellWithReuseIdentifier: "myImageCollectionViewCell")
+        
+        
         setCellLayout()
         
-
+        
         
     }
     
@@ -65,8 +67,8 @@ class ViewController: UIViewController {
                                  height: fullScreenSize.width / number - 10.0)
         theCollectionView.setCollectionViewLayout(layout, animated: true)
     }
-
-
+    
+    
 }
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -74,8 +76,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! MyCollectionViewCell
-        cell.theCellImageView.image = images[indexPath.row]
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseID", for: indexPath) as! MyCollectionViewCell
+//        cell.theCellImageView.image = images[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myImageCollectionViewCell", for: indexPath) as! MyImageCollectionViewCell
+        cell.theImageView.image = images[indexPath.row]
         cell.backgroundColor = .yellow
         return cell
     }
@@ -88,15 +92,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         alert.addAction(UIAlertAction(title: "確定", style: .default, handler: { _ in
             print("確定")
             let nextVc = ImageViewController()
-                
             nextVc.image = self.images[indexPath.row]
-       
             self.present(nextVc, animated: true)
             
         }))
         present(alert, animated: true)
-        
-        
     }
 }
 
